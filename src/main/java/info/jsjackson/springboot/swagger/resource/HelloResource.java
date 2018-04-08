@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/rest/hello")
-@Api(value = "HelloWorld Resource", description = "shows hello world")
+@Api(value = "HelloWorld Resource", tags ="shows hello world")
 public class HelloResource {
 
     @ApiOperation(value = "Returns Hello World")
