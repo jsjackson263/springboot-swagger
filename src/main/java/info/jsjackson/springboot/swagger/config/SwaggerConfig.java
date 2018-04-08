@@ -1,6 +1,7 @@
 package info.jsjackson.springboot.swagger.config;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -17,6 +18,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 public class SwaggerConfig {
 
+  @Value("${info.build.version}")
+  private String versionNumber;
 
     @Bean
     public Docket productApi() {
@@ -41,15 +44,15 @@ public class SwaggerConfig {
                 "https://www.apache.org/licenses/"
         );
 
-        ApiInfo afo = new ApiInfoBuilder()
+        ApiInfo apiMeta = new ApiInfoBuilder()
             .title("Spring Boot Swagger Example API")
             .description( "An example Spring Boot Integration with Swagger")
-            .version("1.0")
+            .version(versionNumber)
             .license("Terms of Service")
             .licenseUrl("https://www.apache.org/licenses/")
-            .contact(new Contact("Jov Samples", "https://www.example.com", "owner@gmail.com"))
+            .contact(new Contact("Jov Sample Apps", "https://www.example.com", "owner@gmail.com"))
             .build();
         
-        return afo;
+        return apiMeta;
     }
 }
